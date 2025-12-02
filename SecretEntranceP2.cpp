@@ -14,21 +14,22 @@ int main() {
 
         char command = code[0];
         int value = stoi(code.substr(1));
+
         if (command == 'L') {
-            dial -= value;
-            if (dial < 0) {
+            for (int i = 1; i <= value; i++) {
+                dial = (dial - 1 + 100) % 100;
+                if (dial == 0) {
+                    passcode++;
+                }
             }
         }
         else if (command == 'R') {
-            dial += value;
-            if (dial >= 100) {
+            for (int i = 1; i <= value; i++) {
+                dial = (dial + 1) % 100;
+                if (dial == 0) {
+                    passcode++;
+                }
             }
-        }
-
-        dial = (dial % 100 + 100) % 100;
-
-        if (dial == 0) {
-            passcode++;
         }
     }
     cout << passcode << endl;

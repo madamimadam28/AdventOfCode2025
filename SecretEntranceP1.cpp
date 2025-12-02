@@ -14,6 +14,7 @@ int main() {
 
         char command = code[0];
         int value = stoi(code.substr(1));
+        
         if (command == 'L') {
             dial -= value;
         }
